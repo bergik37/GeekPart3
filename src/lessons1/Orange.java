@@ -1,5 +1,6 @@
 package lessons1;
-public class Orange extends Fruit{
+
+public class Orange extends Fruit {
 
     @Override
     double getWeigth() {
