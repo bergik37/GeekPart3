@@ -1,4 +1,5 @@
 package lessons1;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -17,14 +18,14 @@ public class Example {
 
     public static void main(String[] args) {
         System.out.println("task_1");
-        Integer arr1[] = {1, 2, 3, 4, 5, 6, 7};
-        String arr2[] = {"A", "B", "C"};
+        Integer[] arr1 = {1, 2, 3, 4, 5, 6, 7};
+        String[] arr2 = {"A", "B", "C"};
         change(arr1, 1, 4);
         change(arr2, 1, 2);
-        System.out.println("");
+        System.out.println();
         System.out.println("task_2");
         arraylist(arr1);
-        System.out.println("");
+        System.out.println();
         System.out.println("task_3");
         Box box = new Box();
         Box<Apple> appleBox = new Box<>();
