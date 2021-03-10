@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BaseAuthService implements AuthService {
-    private  List<User> userlist;
+    private final List<User> userlist;
+
     public BaseAuthService() {
         userlist = new ArrayList<>();
     }
@@ -24,11 +25,11 @@ public class BaseAuthService implements AuthService {
     public String getNickByLoginPass(String login, String password) {
 
         return userlist.stream().map(a -> {
-                    if (a.login.equals(login) && a.password.equals(password)) {
-                        return a.nick;
-                    }
-                    return "";
-                }).collect(Collectors.joining());
+            if (a.login.equals(login) && a.password.equals(password)) {
+                return a.nick;
+            }
+            return "";
+        }).collect(Collectors.joining());
     }
 
     public static class User {
@@ -36,23 +37,32 @@ public class BaseAuthService implements AuthService {
         private String password;
         private String nick;
 
-        public User() { }
+        public User() {
+        }
 
         public String getLogin() {
-            return login; }
+            return login;
+        }
+
         public void setLogin(String login) {
-            this.login = login; }
+            this.login = login;
+        }
 
         public String getPassword() {
-            return password; }
+            return password;
+        }
+
         public void setPassword(String password) {
-            this.password = password; }
+            this.password = password;
+        }
 
         public String getNick() {
-            return nick; }
+            return nick;
+        }
 
         public void setNick(String nick) {
-            this.nick = nick; }
+            this.nick = nick;
+        }
 
         @Override
         public String toString() {

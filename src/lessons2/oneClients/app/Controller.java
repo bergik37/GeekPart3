@@ -7,21 +7,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller extends View implements Initializable {
 
+    private final Model model = new Model();
     Button bt = new Button();
-
     @FXML
     private TextArea output_text;
     @FXML
     private TextField write_text;
     @FXML
     private Button send_Button;
-    private final Model model = new Model();
 
     public void initialize(URL location, ResourceBundle resources) {
     }
