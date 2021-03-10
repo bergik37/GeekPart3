@@ -14,17 +14,21 @@ public class Model {
 
     private final String SERVER_ADDRESS = "localhost";
     private final int SERVER_PORT = 8102;
-    private Socket socket;
-    private Button send_Button;
     boolean isAuthorized = false;
-
-
-
     DataInputStream dis;
     DataOutputStream dos;
-
+    private Socket socket;
+    private Button send_Button;
     private TextField input_text;
     private TextArea output_text;
+
+    public Model() {
+        try {
+            connection();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     void setTextField(TextField s) {
         input_text = s;
@@ -38,14 +42,6 @@ public class Model {
         send_Button = s;
     }
 
-    public Model() {
-        try {
-            connection();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void connection() throws IOException {
         socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
         dis = new DataInputStream(socket.getInputStream());
@@ -56,12 +52,12 @@ public class Model {
                     String message = dis.readUTF();
                     if (message.startsWith("/authok")) {
                         isAuthorized = true;
-                        output_text.appendText(message+"\n");
+                        output_text.appendText(message + "\n");
                         break;
                     }
-                    output_text.appendText(message+"\n");
+                    output_text.appendText(message + "\n");
                 }
-                while (isAuthorized){
+                while (isAuthorized) {
                     String messageFromServer = dis.readUTF();
                     output_text.appendText(messageFromServer + "\n");
                 }
@@ -75,7 +71,7 @@ public class Model {
         if (input_text.getText() != null && !input_text.getText().trim().isEmpty()) {
             try {
                 dos.writeUTF(input_text.getText());
-                if(input_text.getText().equals("/end")) {
+                if (input_text.getText().equals("/end")) {
                     isAuthorized = false;
                     closeConnection();
                 }
@@ -86,7 +82,6 @@ public class Model {
     }
 
 
-
     private void closeConnection() {
         try {
             dis.close();
@@ -95,7 +90,7 @@ public class Model {
         } catch (IOException ignored) {
         }
     }
-    }
+}
 
 
 

@@ -11,13 +11,13 @@ import java.util.List;
 
 public class MyServer {
 
-    private final int PORT = 8102;
-    private List<ClientHandler> clients;
-    private AuthService authService;
     static final String DRIVER = "com.mysql.jdbc.Driver";
     static final String DB = "jdbc:mysql://localhost:3306/lessons";
     static final String USER = "root";
     static final String PASSWORD = "123qRT!";
+    private final int PORT = 8102;
+    private List<ClientHandler> clients;
+    private AuthService authService;
 
     public MyServer() {
 
@@ -26,7 +26,7 @@ public class MyServer {
         try {
             Class.forName(DRIVER);
             conn = DriverManager.getConnection(DB, USER, PASSWORD);
-            statement= conn.createStatement();
+            statement = conn.createStatement();
         } catch (ClassNotFoundException classNotFoundException) {
             classNotFoundException.printStackTrace();
         } catch (SQLException throwables) {
@@ -34,9 +34,9 @@ public class MyServer {
         }
 
         try {
-            ResultSet set= statement.executeQuery("SELECT * FROM new_table");
-            while (set.next()){
-                BaseAuthService.User user =new BaseAuthService.User();
+            ResultSet set = statement.executeQuery("SELECT * FROM new_table");
+            while (set.next()) {
+                BaseAuthService.User user = new BaseAuthService.User();
                 //user.setId(set.getInt(1));
                 user.setLogin(set.getString(2));
                 user.setPassword(set.getString("password"));
