@@ -12,16 +12,18 @@ import java.util.ResourceBundle;
 
 public class Controller extends View implements Initializable {
 
+    Button bt = new Button();
     @FXML
     private TextArea output_text;
     @FXML
     private TextField write_text;
     @FXML
     private Button send_Button;
-    Button bt=new Button();
+    private final Model model = new Model();
+
     public void initialize(URL location, ResourceBundle resources) {
     }
-    private Model model = new Model();
+
     private void go() {
         model.setButton(send_Button);
         model.setTextArea(output_text);

@@ -13,13 +13,13 @@ import java.util.ResourceBundle;
 public class Controller extends View implements Initializable {
 
 
+    private final Model model = new Model();
     @FXML
     private TextArea output_text;
     @FXML
     private TextField write_text;
     @FXML
     private Button send_Button;
-    private final Model model = new Model();
 
     public void initialize(URL location, ResourceBundle resources) {
     }

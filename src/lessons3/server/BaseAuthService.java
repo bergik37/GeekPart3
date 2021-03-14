@@ -1,7 +1,6 @@
 package lessons3.server;
 
 import java.sql.*;
-import java.util.List;
 
 public class BaseAuthService implements AuthService {
 

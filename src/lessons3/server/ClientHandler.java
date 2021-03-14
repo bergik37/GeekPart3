@@ -2,6 +2,7 @@ package lessons3.server;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 
 public class ClientHandler {
@@ -131,7 +132,7 @@ public class ClientHandler {
         }*/
         try {
             this.osw = new OutputStreamWriter(new
-                    FileOutputStream("message.txt", true), "UTF-8");
+                    FileOutputStream("message.txt", true), StandardCharsets.UTF_8);
             osw.write(msg + "\n");
             osw.close();
             out.writeUTF(msg);

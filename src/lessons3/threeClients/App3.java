@@ -8,6 +8,11 @@ import javafx.stage.Stage;
 
 public class App3 extends Application {
     private Stage primaryStage;
+
+    public static void main(String[] args) throws Exception {
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -15,12 +20,8 @@ public class App3 extends Application {
             primaryStage.setTitle("Chat_v0.1");
             primaryStage.setScene(new Scene(chat));
             primaryStage.show();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) throws Exception  {
-        launch(args);
     }
 }
