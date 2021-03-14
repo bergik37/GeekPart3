@@ -24,19 +24,22 @@
     <autoscroll-to-editor value="true" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="748cd3f2-75e1-4c3b-9930-2f23e80f6448">
-        <schema name="lessons" object-types="function, procedure, view, table" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="748cd3f2-75e1-4c3b-9930-2f23e80f6448">
       <console name="@localhost" type="STANDARD" schema="lessons" session="Main"><![CDATA[show databases;
 
 use lessons;
-final String insertSQL ="INSERT INTO lessons (login,password,nick) VALUES ('killer','killer','killer')";*/
+
+create table test(
+    id int
+)
+
+drop table test
+
  /*statement.executeUpdate("INSERT INTO lessons (login,password,nick)VALUES ('killer','killer','killer')");]]></console>
+      <console name="lesson" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -44,6 +47,9 @@ final String insertSQL ="INSERT INTO lessons (login,password,nick) VALUES ('kill
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="748cd3f2-75e1-4c3b-9930-2f23e80f6448" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="748cd3f2-75e1-4c3b-9930-2f23e80f6448" dataset="lessons.test" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -339,21 +345,21 @@ final String insertSQL ="INSERT INTO lessons (login,password,nick) VALUES ('kill
             <filter-element type="OBJECT" id="dblink" selected="true" />
           </user-schema>
           <public-schema>
-            <filter-element type="OBJECT" id="table" selected="false" />
-            <filter-element type="OBJECT" id="view" selected="false" />
-            <filter-element type="OBJECT" id="materialized view" selected="false" />
-            <filter-element type="OBJECT" id="index" selected="false" />
-            <filter-element type="OBJECT" id="constraint" selected="false" />
-            <filter-element type="OBJECT" id="trigger" selected="false" />
-            <filter-element type="OBJECT" id="synonym" selected="false" />
-            <filter-element type="OBJECT" id="sequence" selected="false" />
-            <filter-element type="OBJECT" id="procedure" selected="false" />
-            <filter-element type="OBJECT" id="function" selected="false" />
-            <filter-element type="OBJECT" id="package" selected="false" />
-            <filter-element type="OBJECT" id="type" selected="false" />
-            <filter-element type="OBJECT" id="dimension" selected="false" />
-            <filter-element type="OBJECT" id="cluster" selected="false" />
-            <filter-element type="OBJECT" id="dblink" selected="false" />
+            <filter-element type="OBJECT" id="table" selected="true" />
+            <filter-element type="OBJECT" id="view" selected="true" />
+            <filter-element type="OBJECT" id="materialized view" selected="true" />
+            <filter-element type="OBJECT" id="index" selected="true" />
+            <filter-element type="OBJECT" id="constraint" selected="true" />
+            <filter-element type="OBJECT" id="trigger" selected="true" />
+            <filter-element type="OBJECT" id="synonym" selected="true" />
+            <filter-element type="OBJECT" id="sequence" selected="true" />
+            <filter-element type="OBJECT" id="procedure" selected="true" />
+            <filter-element type="OBJECT" id="function" selected="true" />
+            <filter-element type="OBJECT" id="package" selected="true" />
+            <filter-element type="OBJECT" id="type" selected="true" />
+            <filter-element type="OBJECT" id="dimension" selected="true" />
+            <filter-element type="OBJECT" id="cluster" selected="true" />
+            <filter-element type="OBJECT" id="dblink" selected="true" />
           </public-schema>
           <any-schema>
             <filter-element type="OBJECT" id="table" selected="true" />

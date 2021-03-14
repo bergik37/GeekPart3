@@ -1,7 +1,7 @@
-package lessons2.server;
+package lessons3.server;
 
 
-import java.io.IOException;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.*;
@@ -10,41 +10,12 @@ import java.util.List;
 
 
 public class MyServer {
-
-    private final int PORT = 8102;
+    private final int PORT = 8105;
     private List<ClientHandler> clients;
     private AuthService authService;
-    static final String DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB = "jdbc:mysql://localhost:3306/lessons";
-    static final String USER = "root";
-    static final String PASSWORD = "123qRT!";
 
     public MyServer() {
 
-        Connection conn = null;
-        Statement statement = null;
-        try {
-            Class.forName(DRIVER);
-            conn = DriverManager.getConnection(DB, USER, PASSWORD);
-            statement= conn.createStatement();
-        } catch (ClassNotFoundException classNotFoundException) {
-            classNotFoundException.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        try {
-            ResultSet set= statement.executeQuery("SELECT * FROM new_table");
-            while (set.next()){
-                BaseAuthService.User user =new BaseAuthService.User();
-                //user.setId(set.getInt(1));
-                user.setLogin(set.getString(2));
-                user.setPassword(set.getString("password"));
-                user.setNick(set.getString("nick"));
-                System.out.println(user);
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
 
         try (ServerSocket server = new ServerSocket(PORT)) {
             authService = new BaseAuthService();
@@ -64,13 +35,10 @@ public class MyServer {
                 authService.stop();
             }
         }
-
     }
-
     public AuthService getAuthService() {
         return authService;
     }
-
     public synchronized boolean isNickBusy(String nick) {
         for (ClientHandler c : clients) {
             if (c.getName().equals(nick)) {
@@ -88,7 +56,6 @@ public class MyServer {
             }
         }
     }
-
     public synchronized void getOnlineUsersList(ClientHandler clientHandler) {
         StringBuilder sb = new StringBuilder();
         for (ClientHandler c : clients) {
@@ -113,10 +80,9 @@ public class MyServer {
             c.sendMsg(message);
         }
     }
-
-    public synchronized void unsubscribe(ClientHandler o) {
+    /*public synchronized void unsubscribe(ClientHandler o) {
         clients.remove(o);
-    }
+    }*/
 
     public synchronized void subscribe(ClientHandler o) {
         clients.add(o);

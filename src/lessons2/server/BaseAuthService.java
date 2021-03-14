@@ -22,7 +22,6 @@ public class BaseAuthService implements AuthService {
 
     @Override
     public String getNickByLoginPass(String login, String password) {
-
         return userlist.stream().map(a -> {
                     if (a.login.equals(login) && a.password.equals(password)) {
                         return a.nick;
