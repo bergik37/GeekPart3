@@ -1,10 +1,9 @@
 package lessons3.server;
 
 
-import java.io.*;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,9 +35,11 @@ public class MyServer {
             }
         }
     }
+
     public AuthService getAuthService() {
         return authService;
     }
+
     public synchronized boolean isNickBusy(String nick) {
         for (ClientHandler c : clients) {
             if (c.getName().equals(nick)) {
@@ -56,6 +57,7 @@ public class MyServer {
             }
         }
     }
+
     public synchronized void getOnlineUsersList(ClientHandler clientHandler) {
         StringBuilder sb = new StringBuilder();
         for (ClientHandler c : clients) {

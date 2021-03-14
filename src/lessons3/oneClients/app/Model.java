@@ -8,8 +8,6 @@ import javafx.scene.control.TextField;
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Model {
@@ -51,8 +49,8 @@ public class Model {
 
     public void connection() throws IOException {
 
-        ArrayList<String> list=new ArrayList();
-        isr=new InputStreamReader(new FileInputStream("message.txt"));
+        ArrayList<String> list = new ArrayList();
+        isr = new InputStreamReader(new FileInputStream("message.txt"));
         socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
         dis = new DataInputStream(socket.getInputStream());
         dos = new DataOutputStream(socket.getOutputStream());
@@ -62,19 +60,19 @@ public class Model {
                     String message = dis.readUTF();
                     if (message.startsWith("/authok")) {
                         isAuthorized = true;
-                        if(isAuthorized){
-                            int i=0;
-                            isr=new InputStreamReader(new FileInputStream("message.txt"));
-                            while ((i=isr.read())!=-1) {
-                                list.add(String.valueOf((char)i));
-                                list.replaceAll(e -> e.replace(',',' '));
+                        if (isAuthorized) {
+                            int i = 0;
+                            isr = new InputStreamReader(new FileInputStream("message.txt"));
+                            while ((i = isr.read()) != -1) {
+                                list.add(String.valueOf((char) i));
+                                list.replaceAll(e -> e.replace(',', ' '));
                                 //output_text.appendText((char) i+"\n");
                                 System.out.print((char) i);
                             }
-                            output_text.appendText(list+"\n");
+                            output_text.appendText(list + "\n");
                         }
-                        output_text.appendText(message+"\n");
-                       break;
+                        output_text.appendText(message + "\n");
+                        break;
                     }
                     output_text.appendText(message + "\n");
                 }
@@ -91,9 +89,10 @@ public class Model {
         if (input_text.getText() != null && !input_text.getText().trim().isEmpty()) {
             try {
                 this.osw = new OutputStreamWriter(new
-                        FileOutputStream("message.txt", true), "UTF-8");
+                        FileOutputStream("message.txt", true), StandardCharsets.UTF_8);
                 dos.writeUTF(input_text.getText());
-                if(!input_text.getText().equals("/auth") || !input_text.getText().equals("/list") || !input_text.getText().equals("/end"));
+                if (!input_text.getText().equals("/auth") || !input_text.getText().equals("/list") || !input_text.getText().equals("/end"))
+                    ;
                 osw.write(input_text.getText() + "\n");
                 osw.close();
                 if (input_text.getText().equals("/end")) {
