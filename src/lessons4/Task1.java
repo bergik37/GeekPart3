@@ -4,9 +4,16 @@ public class Task1 {
     static volatile char c = 'A';
     static Object mon = new Object();
 
+    public static void main(String[] args) {
+        System.out.println("Task1");
+        new Thread(new WaitNotifyClass('A', 'B')).start();
+        new Thread(new WaitNotifyClass('B', 'C')).start();
+        new Thread(new WaitNotifyClass('C', 'A')).start();
+    }
+
     static class WaitNotifyClass implements Runnable {
-        private char currentLetter;
-        private char nextLetter;
+        private final char currentLetter;
+        private final char nextLetter;
 
         public WaitNotifyClass(char currentLetter, char nextLetter) {
             this.currentLetter = currentLetter;
@@ -29,11 +36,5 @@ public class Task1 {
                 }
             }
         }
-    }
-    public static void main(String[] args) {
-        System.out.println("Task1");
-        new Thread(new WaitNotifyClass('A', 'B')).start();
-        new Thread(new WaitNotifyClass('B', 'C')).start();
-        new Thread(new WaitNotifyClass('C', 'A')).start();
     }
 }
