@@ -87,6 +87,8 @@ public class MyServer {
     public synchronized void subscribe(ClientHandler o) {
         clients.add(o);
     }
+
+
 }
 
 
