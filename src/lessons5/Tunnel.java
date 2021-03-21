@@ -6,10 +6,12 @@ import static lessons5.MainClass.HALF_CARS_COUNT;
 
 public class Tunnel extends Stage {
     Semaphore smp = new Semaphore(HALF_CARS_COUNT);
+
     public Tunnel() {
         this.length = 80;
         this.description = "Тоннель " + length + " метров";
     }
+
     @Override
     public void go(Car c) {
         try {
